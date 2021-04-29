@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<robot name="sensor_d435" xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:macro name="d435i">
+    
+    <link name="camera_B_link">
+        <inertial>
+        <origin xyz="0.0076536635969946 -7.04454670178979E-07 -0.000511989237860153" rpy="0 0 0" />
+        <mass value="0.0481993963505387" />
+        <inertia
+            ixx="2.73885438795002E-05"
+            ixy="-4.25123308152465E-07"
+            ixz="-3.71368726286081E-08"
+            iyy="3.35060048200323E-06"
+            iyz="2.78803901411349E-08"
+            izz="2.66528125103563E-05" />
+        </inertial>
+
+        <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <mesh filename="package://test/meshes/odean2/camera_B_link.STL" />
+        </geometry>
+        <material name="">
+            <color rgba="0.776470588235294 0.756862745098039 0.737254901960784 1" />
+        </material>
+        </visual>
+
+        <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <mesh filename="package://test/meshes/odean2/camera_B_link.STL" />
+        </geometry>
+        </collision>
+    </link>
+
+    <gazebo reference="camera_link">
+        <sensor type="camera" name="camera">
+        <always_on>true</always_on>
+        <visualize>true</visualize>
+        <camera>
+            <horizontal_fov>1.221730</horizontal_fov>
+            <image>
+                <width>640</width>
+                <height>480</height>
+                <format>R8G8B8</format>
+            </image>
+            <clip>
+                <near>0.03</near>
+                <far>100</far>
+            </clip>
+        </camera>
+        <plugin name="camera_B_C" filename="libgazebo_ros_camera.so">
+            <alwaysOn>true</alwaysOn>
+            <updateRate>30.0</updateRate>
+            <cameraName>camera</cameraName>
+            <frameName>camera_link</frameName>
+            <imageTopicName>color/image_raw</imageTopicName>
+            <cameraInfoTopicName>color/camera_info</cameraInfoTopicName>
+            <hackBaseline>0.07</hackBaseline>
+            <distortionK1>0.0</distortionK1>
+            <distortionK2>0.0</distortionK2>
+            <distortionK3>0.0</distortionK3>
+            <distortionT1>0.0</distortionT1>
+            <distortionT2>0.0</distortionT2>
+        </plugin>
+        </sensor>
+    </gazebo>
+    </xacro:macro>
+</robot>
