@@ -2,7 +2,7 @@
 <robot name="odean2" xmlns:xacro="http://ros.org/wiki/xacro">
  <xacro:include filename="$(find test)/urdf/cam.gazebo.xacro"/>
 
-  <link name="camera_B_link">
+  <link name="camera_link">
     <inertial>
       <origin xyz="0.0076536635969946 -7.04454670178979E-07 -0.000511989237860153" rpy="0 0 0" />
       <mass value="0.0481993963505387" />
@@ -18,7 +18,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://test/meshes/odean2/camera_B_link.STL" />
+        <mesh filename="package://mesh/d435i.STL" />
       </geometry>
       <material name="">
         <color rgba="0.776470588235294 0.756862745098039 0.737254901960784 1" />
@@ -28,7 +28,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://test/meshes/odean2/camera_B_link.STL" />
+        <mesh filename="package://mesh/d435i.STL" />
       </geometry>
     </collision>
   </link>
